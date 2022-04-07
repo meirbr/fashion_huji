@@ -1,0 +1,79 @@
+<template>
+  <div class="outfit-found">
+    <Nav />
+    <div class="items-found">
+      <img
+        class="img-of-found-item"
+        src="https://img1.g-star.com/product/c_fill,f_auto,h_630,q_80/v1614677580/D08512-8415-110-M05/g-star-raw-raw-graphic-slim-t-shirt-white.jpg"
+        alt=""
+      />
+
+      <img
+        class="img-of-found-item"
+        src="https://img1.g-star.com/product/c_fill,f_auto,h_630,q_80/v1614677580/D08512-8415-110-M05/g-star-raw-raw-graphic-slim-t-shirt-white.jpg"
+        alt=""
+      />
+
+      <img
+        class="img-of-found-item"
+        src="https://img1.g-star.com/product/c_fill,f_auto,h_630,q_80/v1614677580/D08512-8415-110-M05/g-star-raw-raw-graphic-slim-t-shirt-white.jpg"
+        alt=""
+      />
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn-login">Dislike</button>
+      <button class="btn-login">Another Outfit</button>
+      <button class="btn-login">Like</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import Nav from "@/components/Nav.vue";
+
+export default {
+  name: "OutfitFound",
+  components: { Nav },
+  data() {
+    return {};
+  },
+};
+</script>
+
+<style scoped>
+.outfit-found {
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.btn-login {
+  margin-top: 15px;
+  width: 200px;
+  color: #fff;
+  background-color: #171717;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  font-size: 28px;
+  cursor: pointer;
+  font-family: "Quicksand", "Grape", "David";
+  padding: 5px;
+  margin: 4vh;
+}
+
+.login-form {
+  margin-top: 10%;
+  border: 1px solid #fff;
+  width: 500px;
+  margin-left: 30%;
+  padding: 10px;
+}
+
+.img-of-found-item {
+  max-width: 300px;
+  margin: 1vh;
+}
+</style>
