@@ -28,8 +28,9 @@ export const useUserStore = defineStore({
       res.pictures.forEach((image) => {
         fetch(`http://localhost:8080/?image_name=${image}`, {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "image/jpeg",
           },
+          mode: "no-cors",
         })
           .then((res) => {
             this.clothes.push(URL.createObjectURL(res));

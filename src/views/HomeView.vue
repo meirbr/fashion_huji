@@ -77,9 +77,17 @@ export default {
   methods: {
     async loadOutfit() {
       fetch(
-        `http://localhost:8080/?weatherParameter=${this.howColdOrHot}&casualityParameter=${this.styleType}`
+        `http://localhost:8080/?weatherParameter=${this.howColdOrHot}&casualityParameter=${this.styleType.name}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          mode: "no-cors",
+        }
       )
         .then(async (res) => {
+          console.log(res);
           await this.userStore.setClothes(res);
           this.$router.push("/outfit-found");
           // do something with the response
