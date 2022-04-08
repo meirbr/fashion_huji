@@ -27,9 +27,7 @@
       </div>
       <br />
 
-      <button class="btn-register-login" @click="$router.push('/outfit-found')">
-        Find me outfit
-      </button>
+      <button class="btn-register-login">Find me outfit</button>
     </form>
   </div>
 </template>
@@ -77,7 +75,17 @@ export default {
     console.log(this.userStore.user);
   },
   methods: {
-    async loadOutfit() {},
+    async loadOutfit() {
+      fetch(
+        `http://localhost:8080/?weatherParameter=${this.howColdOrHot}&casualityParameter=${this.styleType}`
+      )
+        .then(async (res) => {
+          await this.userStore.setClothes(res);
+          this.$router.push("/outfit-found");
+          // do something with the response
+        })
+        .catch((error) => console.log(error));
+    },
   },
 };
 </script>

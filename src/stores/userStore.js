@@ -9,6 +9,7 @@ export const useUserStore = defineStore({
         ? true
         : false,
     user: null,
+    clothes: [],
   }),
   getters: {
     doubleCount: (state) => state.counter * 2,
@@ -21,6 +22,22 @@ export const useUserStore = defineStore({
       this.loggedIn = true;
       localStorage.setItem("loggedIn", true);
       this.user = new User(username, weight, height, bodyShape);
+    },
+    async setClothes(res) {
+      this.clothes = [];
+      res.pictures.forEach((image) => {
+        fetch(`http://localhost:8080/?image_name=${image}`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => {
+            this.clothes.push(URL.createObjectURL(res));
+          })
+          .catch((err) => {
+            return;
+          });
+      });
     },
   },
 });

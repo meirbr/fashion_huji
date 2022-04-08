@@ -55,11 +55,12 @@
     <h5>Basic</h5>
     <FileUpload
       mode="basic"
-      name="demo[]"
-      url="./upload.php"
+      name="file[]"
+      url="http://localhost:8080/"
       accept="image/*"
       :maxFileSize="1000000"
       @upload="onUpload"
+      ref="file"
     />
   </div>
 </template>
@@ -97,6 +98,10 @@ export default {
     Galleria,
     Carousel,
     Nav,
+  },
+  setup() {
+    const file = ref(null);
+    return { file };
   },
   data() {
     return {
@@ -148,6 +153,12 @@ export default {
     imageClick(index) {
       this.activeIndex = index;
       this.displayCustom = true;
+    },
+    onUpload(event) {
+      var formData = new FormData();
+      let file = event.target.files[0];
+      formData.append("fileName", file.name);
+      formData.append();
     },
   },
 };

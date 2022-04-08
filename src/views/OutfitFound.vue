@@ -3,8 +3,10 @@
     <Nav />
     <div class="items-found">
       <img
+        v-for="(image, i) in userStore.clothes"
+        :key="`image ${i}`"
         class="img-of-found-item"
-        src="https://img1.g-star.com/product/c_fill,f_auto,h_630,q_80/v1614677580/D08512-8415-110-M05/g-star-raw-raw-graphic-slim-t-shirt-white.jpg"
+        :src="image"
         alt=""
       />
 
@@ -31,12 +33,15 @@
 
 <script>
 import Nav from "@/components/Nav.vue";
+import { useUserStore } from "@/stores/userStore";
 
 export default {
   name: "OutfitFound",
   components: { Nav },
   data() {
-    return {};
+    return {
+      userStore: useUserStore(),
+    };
   },
 };
 </script>
